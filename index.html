@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Avneet Hundel. Health tech GTM strategy, ops and AI systems.">
+<title>Avneet Hundel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow reading column (1080px) with a left aligned editorial hero; data tiles and work grid open up to two or three columns. */
+:root{
+  --bg:#F6EDE8; --surface:#FCF7F3; --ink:#3A1A15; --muted:#7A4A3C; --line:#EBD6CA;
+  --accent:#A54D2E; --accent-soft:#EEC2A2; --on-accent:#FFFFFF; --fill:#C66333; --bar:#E19B6C; color-scheme:light;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
+  --body:"Instrument Sans", "Helvetica Neue", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+
+/* nav */
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))) ;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.nav .wrap{display:flex;align-items:center;gap:24px;height:60px}
+.brand{font-family:var(--display);font-weight:800;font-size:19px;text-decoration:none;letter-spacing:-.01em}
+.nav nav{display:flex;gap:22px;margin-left:auto;font-size:15px}
+.nav nav a{text-decoration:none;color:var(--muted)}
+.nav nav a:hover{color:var(--ink)}
+@media (max-width:720px){.nav nav a.opt{display:none}}
+
+section{padding-block:72px;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+
+/* hero */
+.hero{padding-block:72px 56px}
+.hero h1{font-size:clamp(44px,8vw,92px);font-weight:800;letter-spacing:-.03em;margin-top:18px}
+.hero h1 span{color:var(--accent)}
+.hero .lede{font-size:clamp(19px,2.2vw,23px);max-width:40ch;margin-top:22px}
+.hero .lede2{max-width:58ch;margin-top:14px;color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-family:var(--body);color:var(--ink)}
+.btn.primary{background:#E19B6C;border-color:#E19B6C;color:var(--ink)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:56px;border-top:1px solid var(--line)}
+.stat{padding:22px 24px 0 0}
+.stat + .stat{padding-left:24px;border-left:1px solid var(--line)}
+.stat b{display:block;font-family:var(--display);font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat span{font-size:15px;color:var(--muted)}
+@media (max-width:640px){.stats{grid-template-columns:1fr}.stat + .stat{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:18px}}
+
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;max-width:62ch}
+.sec-head h2{font-size:clamp(30px,4.4vw,46px);font-weight:800;letter-spacing:-.02em}
+
+/* flagship */
+.flag{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:860px){.flag{grid-template-columns:1fr}}
+.flag ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.flag li{display:flex;gap:12px;align-items:baseline}
+.flag li::before{content:"";flex:none;width:7px;height:7px;border-radius:2px;background:var(--accent);transform:translateY(-2px)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tag{font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:6px;background:#E6C97C;color:var(--ink)}
+.note{font-size:13px;color:var(--muted);margin-top:14px}
+
+/* roi preview */
+.roi{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 18px 40px -28px rgba(108,42,35,.35)}
+.roi-top{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--accent-soft);border-bottom:1px solid var(--line)}
+.roi-top .dot{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.roi-top .url{margin-left:8px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.roi-step{padding:16px 18px;border-bottom:1px solid var(--line);display:grid;gap:10px}
+.roi-step:last-child{border-bottom:0}
+.roi .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg)}
+.assump{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.assump b{display:block;font-family:var(--display);font-size:26px;font-weight:800;line-height:1.1;color:var(--accent)}
+.assump span{font-size:13px;color:var(--muted)}
+.roi-step.out{background:var(--fill);color:var(--on-accent)}
+.roi-step.out .lbl,.roi-step.out .mini{color:var(--on-accent);opacity:.9}
+.outs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.outs div{background:rgba(255,255,255,.18);border-radius:8px;padding:10px;font-weight:600;font-size:14px;line-height:1.3}
+.mini{font-size:13px}
+/* message house preview */
+.house{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;font-size:13px;box-shadow:0 18px 40px -28px rgba(108,42,35,.25)}
+.house .roof{clip-path:polygon(50% 0,100% 38%,100% 100%,0 100%,0 38%);background:var(--fill);color:var(--on-accent);text-align:center;padding:52px 10% 14px;font-weight:600;line-height:1.35}
+.house .row{border:1px solid var(--line);border-top:0;padding:10px 12px}
+.house .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
+.house .pillars{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-top:0}
+.house .pillars div{padding:12px 10px;text-align:center;font-weight:600}
+.house .pillars div + div{border-left:1px solid var(--line)}
+.house .base{background:var(--accent-soft);border:1px solid var(--line);border-top:0;padding:10px 12px;text-align:center}
+.house .switch{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.house .switch button{font:500 12px var(--mono);border:1px solid var(--line);background:transparent;color:var(--muted);padding:5px 10px;border-radius:6px;cursor:pointer}
+.house .switch button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+.also{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;text-decoration:none;background:var(--accent-soft);border-radius:14px;padding:24px 26px}
+.also > div{flex:1 1 380px;display:grid;gap:6px;min-width:0}
+.also h3{font-size:28px;font-weight:800;letter-spacing:-.01em}
+.also p{color:var(--muted);max-width:68ch}
+/* impact */
+.impact{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.tile b{font-family:var(--display);font-size:38px;font-weight:800;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.tile p{font-size:15px;color:var(--muted)}
+.tile .org{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-top:auto;padding-top:6px}
+.tile.chart{grid-column:span 2;grid-row:span 2}
+@media (max-width:900px){.impact{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.impact{grid-template-columns:1fr}.tile.chart{grid-column:auto;grid-row:auto}}
+.ramp{width:100%;height:auto;margin-top:10px}
+.ramp text{font-family:var(--mono);font-size:12px;fill:var(--muted)}
+.ramp .v{fill:var(--ink);font-weight:500}
+.ramp .bar{fill:var(--bar)}
+.ramp .bar.hi{fill:var(--fill)}
+.ramp .axis{stroke:var(--line)}
+
+.tile.auto .k2{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.duo p{font-size:14px}
+.calc h4{font-family:var(--body);font-size:13px;font-weight:600;margin:12px 0 6px}
+.calc ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.calc li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.calc li span{color:var(--muted);min-width:0}
+.calc li em{font-style:normal;font-weight:600;text-align:right;font-variant-numeric:tabular-nums;flex:none}
+.calc li:last-child em{color:var(--accent)}
+@media (max-width:420px){.calc li{flex-direction:column;gap:2px}.calc li em{text-align:left}}
+/* experience */
+.xp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.xp{grid-template-columns:1fr}}
+.xcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.xmeta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted)}
+.xmeta span:first-child{color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+.xcard h3{font-size:26px;font-weight:800;letter-spacing:-.01em}
+.xcard ul{margin:0;padding-left:18px;display:grid;gap:10px;font-size:15.5px}
+.xcard .tags{margin-top:auto}
+/* work */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.filters button{font:500 14px var(--body);padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.count{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card .meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .kind{color:var(--accent)}
+.card h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.card p{font-size:15px;color:var(--muted)}
+.card p.sub{font-size:14px;font-weight:600;color:var(--accent);margin-top:-4px}
+.card .go{margin-top:auto;padding-top:6px;font-weight:600;font-size:14px;text-decoration:none;color:var(--accent)}
+.card .go.off{color:var(--muted);font-weight:500}
+.card.feature{border-color:var(--accent)}
+
+/* what I do */
+.do{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.do div{padding:26px 28px 26px 0;border-bottom:1px solid var(--line)}
+.do div:nth-child(even){padding-left:28px;border-left:1px solid var(--line)}
+.do h3{font-size:22px;font-weight:600;margin-bottom:8px}
+.do p{color:var(--muted);max-width:48ch}
+@media (max-width:700px){.do{grid-template-columns:1fr}.do div:nth-child(even){padding-left:0;border-left:0}}
+
+/* path */
+.path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:8px}
+@media (max-width:860px){.path{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.path{grid-template-columns:1fr}}
+.step{border-top:2px solid var(--ink);padding-top:14px}
+.step .yr{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.step h3{font-size:19px;font-weight:600;margin:4px 0 6px}
+.step p{font-size:15px;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:36px;font-size:15px}
+.facts span{color:var(--muted)}
+.facts b{font-weight:600;color:var(--ink)}
+
+/* contact */
+.contact{text-align:left}
+.contact h2{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-.02em;max-width:18ch}
+.mailrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px}
+.mail{font-family:var(--mono);font-size:16px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);user-select:all}
+footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+@media (prefers-reduced-motion:no-preference){.btn,.card,.filters button{transition:transform .15s ease, background .15s}.card:hover{transform:translateY(-2px)}}
+</style>
+</head>
+<body>
+
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Avneet Hundel</a>
+    <nav>
+      <a href="#flagship" class="opt">Flagship</a>
+      <a href="#impact" class="opt">Impact</a>
+      <a href="#work">Work</a>
+      <a href="#experience" class="opt">Experience</a>
+      <a href="#what-i-do" class="opt">What I do</a>
+      <a href="https://www.linkedin.com/in/avneet-hundel" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <div class="eyebrow">Health tech · GTM strategy &amp; ops · AI systems</div>
+    <h1>Hi, I'm Avneet<span>.</span></h1>
+    <p class="lede">I help early stage health tech founders find the words and the systems to take their product to market.</p>
+    <p class="lede2">GTM strategy, product marketing and messaging, plus the AI ops that make a lean team move like a bigger one. Think of it as a fractional Chief of Staff and GTM function combined. I've worked across the US and Australian health tech markets, from consulting at EY to building on startup sales floors.</p>
+    <div class="ctas">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn" href="https://www.linkedin.com/in/avneet-hundel" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>6 yrs</b><span>GTM strategy, ops and AI systems across consulting and startups in the US and Australia</span></div>
+      <div class="stat"><b>$400K+</b><span>New business pipeline I sourced in under six months</span></div>
+      <div class="stat"><b>11</b><span>AI tools and automations built for a sales team</span></div>
+    </div>
+  </section>
+
+  <section id="flagship">
+    <div class="flag">
+      <div>
+        <div class="eyebrow">Flagship work sample</div>
+        <h2 style="font-size:clamp(30px,4.4vw,46px);font-weight:800;letter-spacing:-.02em;margin-top:10px">A business case a buyer can build in five minutes</h2>
+        <p style="margin-top:18px;max-width:52ch">Big accounts rarely say no to the product. They stall on the budget conversation. So I built an ROI calculator with Claude Code that lets Firmable's AEs build the business case live on a discovery call, using the prospect's own team, salaries and funnel.</p>
+        <ul>
+          <li>Models headcount, manual research time and the full funnel from contacts to closed won</li>
+          <li>Shows Year 1 net benefit, ROI and payback, then compares all four pricing tiers</li>
+          <li>Conservative, base and aggressive scenarios, with assumptions tied to Forrester and Gartner benchmarks</li>
+          <li>Designed, built and deployed by me, and used by AEs with large accounts</li>
+        </ul>
+        <div class="ctas"><a class="btn primary" href="https://harmonious-truffle-d559c7.netlify.app/" target="_blank" rel="noopener">Open the calculator ↗</a></div>
+        <div class="tags"><span class="tag">Sales enablement</span><span class="tag">Value selling</span><span class="tag">Claude Code</span><span class="tag">Live tool</span></div>
+      </div>
+      <div class="roi" aria-label="How the ROI calculator works">
+        <div class="roi-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">See your return with Firmable</span></div>
+        <div class="roi-step">
+          <span class="lbl">1 · Your inputs</span>
+          <div class="chips"><span>SDRs and AEs</span><span>Salaries</span><span>Research hours</span><span>Connect rate</span><span>Win rate</span><span>Deal value</span><span>Plan</span></div>
+        </div>
+        <div class="roi-step">
+          <span class="lbl">2 · Benchmarked assumptions</span>
+          <div class="assump">
+            <div><b>60%</b><span>less research time</span></div>
+            <div><b>25%</b><span>more meetings booked</span></div>
+            <div><b>12%</b><span>win rate lift</span></div>
+          </div>
+        </div>
+        <div class="roi-step out">
+          <span class="lbl">3 · Your business case</span>
+          <div class="outs">
+            <div><span>Year 1 net benefit</span></div>
+            <div><span>ROI</span></div>
+            <div><span>Payback in months</span></div>
+          </div>
+          <p class="mini">Plus value breakdown, investment breakdown and a side by side of every plan</p>
+        </div>
+      </div>
+    </div>
+    <a class="also" href="call-intel.html">
+      <div><span class="eyebrow">Also explore</span><h3>Call Intelligence Hub</h3><p>What 4,000+ sales calls taught a GTM team. An objection library, persona frameworks, battlecards and an industry playbook built from call transcripts with AI and reviewed by me, plus a daily competitor digest sent straight to the team's inbox.</p></div>
+      <span class="btn primary">Explore the hub →</span>
+    </a>
+  </section>
+
+  <section id="impact">
+    <div class="sec-head">
+      <div class="eyebrow">Impact by the numbers</div>
+      <h2>Results I can point to</h2>
+    </div>
+    <div class="impact">
+      <div class="tile chart auto">
+        <span class="k2">AI automation · HubSpot company notes enrichment</span>
+        <div class="duo">
+          <div><b>~266 hrs</b><p>saved across a 10 person SDR team each month</p></div>
+          <div><b>$40K</b><p>in extra revenue potential each month</p></div>
+        </div>
+        <div class="calc">
+          <h4>Time saved</h4>
+          <ol>
+            <li><span>40 companies × 2 minutes of research</span><em>80 min per SDR a day</em></li>
+            <li><span>80 minutes × 10 SDRs</span><em>13.3 hrs a day</em></li>
+            <li><span>13.3 hours × 5 days</span><em>66.5 hrs a week</em></li>
+            <li><span>66.5 hours × 4 weeks</span><em>~266 hrs a month</em></li>
+          </ol>
+          <h4>Revenue impact</h4>
+          <ol>
+            <li><span>80 minutes back ÷ 15 minute calls</span><em>5 more calls per SDR a day</em></li>
+            <li><span>5 calls × 10 SDRs</span><em>50 more calls a day</em></li>
+            <li><span>50 calls × $40 per call</span><em>$2,000 a day</em></li>
+            <li><span>$2,000 × 20 working days</span><em>$40,000 a month</em></li>
+          </ol>
+        </div>
+        <span class="org">Firmable · 2026</span>
+      </div>
+      <div class="tile"><b>45 to 60</b><p>Hours a month saved across a 10 person sales team by a Claude Code automation. Reps made 30% more calls, worth an estimated $16K in extra monthly revenue.</p><span class="org">Firmable</span></div>
+      <div class="tile"><b>200+</b><p>Qualified leads from the Becker's Healthcare conference strategy, from speaker prep to booth.</p><span class="org">Steer Health</span></div>
+      <div class="tile"><b>$100K</b><p>Government contract won after I led the proposal and presented in the final client interview.</p><span class="org">EY</span></div>
+      <div class="tile"><b>~40%</b><p>Lift in client and investor engagement from an insights playbook tracking deal flow and market trends.</p><span class="org">Summit Health Advisors</span></div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sec-head">
+      <div class="eyebrow">My work</div>
+      <h2>Things I've built and written</h2>
+      <p class="muted">Launch plans, sales tools, automations and essays. Some are live. Others I'm happy to walk through on a call.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter work">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="launch" aria-pressed="false">Launches &amp; positioning</button>
+      <button type="button" data-f="enable" aria-pressed="false">Sales enablement</button>
+      <button type="button" data-f="ai" aria-pressed="false">AI tools</button>
+      <button type="button" data-f="writing" aria-pressed="false">Writing</button>
+    </div>
+    <div class="count" id="count" aria-live="polite">Showing 6 projects</div>
+    <div class="grid" id="grid">
+      <article class="card" data-c="launch enable">
+        <div class="meta"><span class="kind">Framework</span><span>Personal project</span></div>
+        <h3>Launch Kit</h3>
+        <p class="sub">A step by step framework for a product launch plan</p>
+        <p>From pre work to the market gap, message house, rollout and metrics, with 40+ AI prompts. Built from the three feature AI launch plan I wrote at Firmable.</p>
+        <a class="go" href="launch-kit.html">Open the framework →</a>
+      </article>
+      <article class="card feature" data-c="enable ai">
+        <div class="meta"><span class="kind">Live web app</span><span>Firmable</span></div>
+        <h3>ROI Calculator</h3>
+        <p>Lets AEs model team size, funnel metrics and impact in a call, then shows net benefit, ROI and payback across every pricing tier. Built with Claude Code.</p>
+        <a class="go" href="https://harmonious-truffle-d559c7.netlify.app/" target="_blank" rel="noopener">View asset ↗</a>
+      </article>
+      <article class="card" data-c="ai enable">
+        <div class="meta"><span class="kind">Interactive site</span><span>Firmable</span></div>
+        <h3>Call Intelligence Hub</h3>
+        <p>Sales calls processed at scale into an objection library, persona frameworks, battlecards and an industry playbook, plus a daily competitor digest.</p>
+        <a class="go" href="call-intel.html">Explore the hub →</a>
+      </article>
+      <article class="card" data-c="writing">
+        <div class="meta"><span class="kind">Essay</span><span>Substack</span></div>
+        <h3>The magic pill that needs a plan</h3>
+        <p>Why GLP-1s work best with holistic care around them, and which companies are building that support.</p>
+        <a class="go" href="https://substack.com/home/post/p-215871626" target="_blank" rel="noopener">Read ↗</a>
+      </article>
+      <article class="card" data-c="writing ai">
+        <div class="meta"><span class="kind">Guide</span><span>Substack</span></div>
+        <h3>Guide on how to use AI within your business</h3>
+        <p>Why systems thinkers win with AI, and my Process Before Tool framework, drawn from the automations I built at Firmable.</p>
+        <a class="go" href="https://substack.com/home/post/p-206799111" target="_blank" rel="noopener">Read ↗</a>
+      </article>
+      <article class="card" data-c="writing launch">
+        <div class="meta"><span class="kind">Essay</span><span>Substack</span></div>
+        <h3>How Heidi Health went global</h3>
+        <p>A look at the Australian AI scribe that became a unicorn, and the global first, product led growth motion behind it.</p>
+        <a class="go" href="https://substack.com/home/post/p-219373035" target="_blank" rel="noopener">Read ↗</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <div class="eyebrow">Consulting foundation</div>
+      <h2>Where the strategy comes from</h2>
+      <p class="muted">Before startups, I spent close to five years in consulting across Australia and the US. It's where I learned to think at the level of the business before building anything.</p>
+    </div>
+    <div class="xp">
+      <article class="xcard">
+        <div class="xmeta"><span>EY</span><span>Senior Consultant · Australia · 2020 to 2023</span></div>
+        <h3>Built operations from zero, under pressure</h3>
+        <ul>
+          <li>Founding member of a COVID-19 emergency response team. Built the PPE station system from scratch with no playbook, covering ordering, approvals, delivery and invoice reconciliation, plus the central tracker and training guides that let the operation scale.</li>
+          <li>Won a $100K government contract by leading the proposal and presenting in the final client interview.</li>
+          <li>Shaped digital health strategy for large health system clients and built PMO workflows and PowerBI dashboards for a large program, working between executives and program managers.</li>
+        </ul>
+        <div class="tags"><span class="tag">Operations</span><span class="tag">Digital health</span><span class="tag">Proposals</span></div>
+      </article>
+      <article class="xcard">
+        <div class="xmeta"><span>Summit Health Advisors</span><span>Senior Consultant · US · 2023 to 2024</span></div>
+        <h3>Helped investors and founders read the US digital health market</h3>
+        <ul>
+          <li>Worked with Insight Partners to assess whether platform startups were worth investing in.</li>
+          <li>Contributed to the 2023 State of Healthcare Platforms Report and the research behind Forbes articles.</li>
+          <li>Built an insights playbook tracking deal flow, platform usage and market trends, lifting client and investor engagement by about 40%.</li>
+          <li>Shaped the roadmap for an AI video imaging product, with design changes that avoided potential multi million dollar liability.</li>
+        </ul>
+        <div class="tags"><span class="tag">GTM research</span><span class="tag">Investor diligence</span><span class="tag">US healthcare</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="what-i-do">
+    <div class="sec-head">
+      <div class="eyebrow">What I do</div>
+      <h2>Strategy, then the systems to run it</h2>
+    </div>
+    <div class="do">
+      <div><h3>Product launches</h3><p>Positioning, a message house, internal enablement and an external rollout, with metrics that tie back to revenue.</p></div>
+      <div><h3>Positioning and competitive intel</h3><p>Market maps, pricing benchmarks, battlecards and competitor monitoring that keeps running after the deck is done.</p></div>
+      <div><h3>Sales enablement</h3><p>ROI calculators, pitch guides by industry, objection handling and demo talk tracks. Written by someone who has made more than 4,000 cold calls.</p></div>
+      <div><h3>AI ops and systems</h3><p>Automations in Claude Code, n8n and HubSpot that give reps hours back each week. I map the process first, then pick the tool.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Background</div>
+      <h2>How I got here</h2>
+    </div>
+    <div class="path">
+      <div class="step"><span class="yr">2020 to 2023</span><h3>EY</h3><p>Senior Consultant in digital health strategy. Program delivery for large health systems and proposal lead on a $100K win.</p></div>
+      <div class="step"><span class="yr">2023 to 2024</span><h3>Summit Health Advisors</h3><p>US digital health GTM, market research and ROI modeling for startups, enterprises and investors, including Insight Partners.</p></div>
+      <div class="step"><span class="yr">2025</span><h3>Steer Health</h3><p>Seed stage AI healthcare startup. Worked beside the CEO on positioning, sales pitches, campaigns and conferences.</p></div>
+      <div class="step"><span class="yr">2026</span><h3>Firmable</h3><p>GTM and sales development at a Series A B2B data company. Sold the product, built the tools, wrote the launch plan.</p></div>
+    </div>
+    <div class="facts">
+      <span><b>Languages</b> English, Spanish, Hindi, Punjabi</span>
+      <span><b>Education</b> Monash University, Warwick exchange scholar</span>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="eyebrow">Contact</div>
+    <h2 style="margin-top:12px">Got important work that nobody owns yet?</h2>
+    <p class="muted" style="margin-top:16px;max-width:52ch">Launches, messaging, GTM ops, and the systems that tie them together. The work that sits between teams and lands on a founder's desk. I'm especially keen to help seed to Series B health tech founders who need a strategic right hand who also builds.</p>
+    <div class="mailrow">
+      <span class="mail" id="mail">avneet.hundel@gmail.com</span>
+      <button class="btn primary" type="button" id="copy">Copy email</button>
+      <a class="btn" href="https://www.linkedin.com/in/avneet-hundel" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </section>
+</main>
+<footer class="wrap"><span>© 2026 Avneet Hundel</span><span>Mexico City</span></footer>
+
+<script>
+(function(){
+  // work filters
+  const btns=[...document.querySelectorAll('.filters button')];
+  const cards=[...document.querySelectorAll('#grid .card')];
+  const count=document.getElementById('count');
+  function apply(f){
+    let n=0;
+    cards.forEach(c=>{const show=f==='all'||c.dataset.c.split(' ').includes(f);c.hidden=!show;if(show)n++;});
+    btns.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.f===f)));
+    count.textContent='Showing '+n+' project'+(n===1?'':'s');
+  }
+  btns.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.f)));
+  apply('all');
+
+  // copy email
+  const cp=document.getElementById('copy');
+  cp.addEventListener('click',()=>{
+    const t=document.getElementById('mail').textContent;
+    const done=()=>{cp.textContent='Copied';setTimeout(()=>cp.textContent='Copy email',1600);};
+    try{navigator.clipboard.writeText(t).then(done,select);}catch(e){select();}
+    function select(){const r=document.createRange();r.selectNodeContents(document.getElementById('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='Selected, press copy';}
+  });
+})();
+</script>
+
+</body>
+</html>
