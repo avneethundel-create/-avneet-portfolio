@@ -232,6 +232,8 @@ section:last-of-type{border-bottom:0}
 .back .tag{background:rgba(255,255,255,.18);color:#fff}
 @media (hover:hover){.flip:hover .front{border-color:var(--apricot,#E19B6C)}}
 @media (prefers-reduced-motion:reduce){.flip-in{transition:none}}
+.tile.wide{grid-column:span 2}
+@media (max-width:560px){.tile.wide{grid-column:auto}}
 /* work */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .filters button{font:500 14px var(--body);padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
@@ -293,7 +295,6 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
       <a href="#work">Work</a>
       <a href="#experience" class="opt">Experience</a>
       <a href="#how" class="opt">How I work</a>
-      <a href="#what-i-do" class="opt">What I do</a>
       <a href="https://www.linkedin.com/in/avneet-hundel" target="_blank" rel="noopener">LinkedIn <span class="ar">↗</span></a>
     </nav>
   </div>
@@ -303,8 +304,8 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
   <section class="hero">
     <div class="eyebrow">Health tech · Commercial strategy · Revenue ops and AI</div>
     <div class="namerow"><img class="avatar" src="avneet.jpg" alt="Avneet Hundel" width="640" height="720"><h1>Hi, I'm Avneet<span>.</span></h1></div>
-    <p class="lede">I help early stage health tech teams build the commercial engine.</p>
-    <p class="lede2">Strategy consultant turned startup operator. I see GTM from the top down and build it from the bottom up. For founders, that means a plan your team actually runs, reps who know who to call and what to say, and pipeline you can see in the numbers.</p>
+    <p class="lede">I help health tech teams sell smarter, with sharper strategy and AI tools that save reps hours.</p>
+    <p class="lede2">Consulting taught me to see GTM from the top down. Making the sales calls myself showed me what actually works on the ground. I bring both, and the AI tools I build help reps spend less time researching and more time selling.</p>
     <div class="ctas">
       <a class="btn primary" href="#contact">Get in touch</a>
       <a class="btn" href="https://www.linkedin.com/in/avneet-hundel" target="_blank" rel="noopener">LinkedIn <span class="ar">↗</span></a>
@@ -312,7 +313,7 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
     <div class="stats">
       <div class="stat"><b>US + ANZ</b><span>6+ years in commercial strategy and operations across consulting and startups in both markets</span></div>
       <div class="stat"><b>$400K+</b><span>New business pipeline I sourced in under six months</span></div>
-      <div class="stat"><b>11</b><span>AI tools and automations built for a sales team</span></div>
+      <div class="stat"><b>$100K</b><span>Government contract won at EY. I shaped much of the pitch and sat on the final interview panel</span></div>
     </div>
   </section>
 
@@ -321,44 +322,40 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
       <div>
         <div class="eyebrow">Flagship work sample</div>
         <h2 style="font-size:clamp(30px,4.4vw,46px);font-weight:800;letter-spacing:-.02em;margin-top:10px">A business case a buyer can build in five minutes</h2>
-        <p style="margin-top:18px;max-width:52ch">Big accounts stall on budget, not product. So I built a calculator AEs use live on calls to build the business case from the prospect's own numbers.</p>
+        <p style="margin-top:18px;max-width:52ch">Big accounts stall on budget, not product. So I designed the logic for a business case that starts with the buyer's own numbers and ends in the language a CFO signs off on.</p>
         <ul>
-          <li>Year 1 ROI and payback across every pricing tier</li>
-          <li>Benchmarked assumptions with three scenarios</li>
-          <li>Designed, built and shipped by me with Claude Code</li>
+          <li>Starts with the buyer's team, salaries and funnel</li>
+          <li>Applies benchmarked assumptions across three scenarios</li>
+          <li>Ends with ROI, payback and the right plan for their size</li>
         </ul>
-        <div class="ctas"><a class="btn primary" href="https://harmonious-truffle-d559c7.netlify.app/" target="_blank" rel="noopener">Open the calculator <span class="ar">↗</span></a></div>
-        <div class="tags"><span class="tag">Value selling</span><span class="tag">Deal strategy</span><span class="tag">Claude Code</span><span class="tag">Live tool</span></div>
+        <div class="ctas"><a class="btn primary" href="#contact">Ask me for a walkthrough</a></div>
+        <div class="tags"><span class="tag">Value selling</span><span class="tag">Deal strategy</span><span class="tag">Business case</span><span class="tag">Walkthrough on request</span></div>
       </div>
-      <div class="roi" aria-label="How the ROI calculator works">
-        <div class="roi-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">See your return with Firmable</span></div>
+      <div class="roi" aria-label="The business case logic">
+        <div class="roi-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">The business case logic</span></div>
         <div class="roi-step">
-          <span class="lbl">1 · Your inputs</span>
-          <div class="chips"><span>SDRs and AEs</span><span>Salaries</span><span>Research hours</span><span>Connect rate</span><span>Win rate</span><span>Deal value</span><span>Plan</span></div>
+          <span class="lbl">1 · The buyer's own numbers</span>
+          <div class="chips"><span>Team size</span><span>Salaries</span><span>Hours lost to manual work</span><span>Funnel rates</span><span>Deal value</span></div>
         </div>
         <div class="roi-step">
-          <span class="lbl">2 · Benchmarked assumptions</span>
+          <span class="lbl">2 · Benchmarked impact, three scenarios</span>
           <div class="assump">
-            <div><b>60%</b><span>less research time</span></div>
-            <div><b>25%</b><span>more meetings booked</span></div>
-            <div><b>12%</b><span>win rate lift</span></div>
+            <div><b>Time</b><span>hours given back to the team</span></div>
+            <div><b>Pipeline</b><span>more meetings and better fit</span></div>
+            <div><b>Revenue</b><span>higher win rates</span></div>
           </div>
         </div>
         <div class="roi-step out">
-          <span class="lbl">3 · Your business case</span>
+          <span class="lbl">3 · The case a CFO approves</span>
           <div class="outs">
             <div><span>Year 1 net benefit</span></div>
             <div><span>ROI</span></div>
             <div><span>Payback in months</span></div>
           </div>
-          <p class="mini">Plus value breakdown, investment breakdown and a side by side of every plan</p>
+          <p class="mini">Plus a side by side of every plan, so the buyer chooses a tier instead of a yes or no</p>
         </div>
       </div>
     </div>
-    <a class="also" href="call-intel.html">
-      <div><span class="eyebrow">Also explore</span><h3>Call Intelligence Hub</h3><p>Thousands of sales calls turned into objection guides, personas, battlecards and a daily competitor digest.</p></div>
-      <span class="btn primary">Explore the hub <span class="ar">→</span></span>
-    </a>
   </section>
 
   <section id="impact">
@@ -404,8 +401,7 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
       </div>
       <div class="tile"><b>$45.7K</b><p>Enterprise deal with Xe.com. Multithreaded across the buying group and closed in under a month. Earned a company values nomination.</p><span class="org">Firmable</span></div>
       <div class="tile"><b>200+</b><p>Qualified leads from the Becker's Healthcare conference strategy, from speaker prep to booth.</p><span class="org">Steer Health</span></div>
-      <div class="tile"><b>$100K</b><p>Government contract won after I led the proposal and presented in the final client interview.</p><span class="org">EY</span></div>
-      <div class="tile"><b>~40%</b><p>Lift in client and investor engagement from an insights playbook tracking deal flow and market trends.</p><span class="org">Summit Health Advisors</span></div>
+      <div class="tile wide"><b>11</b><p>I was on the calls, so I could see where time was being lost. I built AI tools to fix it, well beyond the sales development role, and gave the team back around 266 hours a month.</p><span class="org">Firmable</span></div>
     </div>
   </section>
 
@@ -415,21 +411,7 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
       <h2>Things I've built and written</h2>
       <p class="muted">Tools, frameworks and writing. All live.</p>
     </div>
-    <div class="filters" role="group" aria-label="Filter work">
-      <button type="button" data-f="all" aria-pressed="true">All</button>
-      <button type="button" data-f="launch" aria-pressed="false">GTM strategy</button>
-      <button type="button" data-f="enable" aria-pressed="false">Sales enablement</button>
-      <button type="button" data-f="ai" aria-pressed="false">AI tools</button>
-      <button type="button" data-f="writing" aria-pressed="false">Writing</button>
-    </div>
-    <div class="count" id="count" aria-live="polite">Showing 7 projects</div>
-    <div class="grid" id="grid">
-      <article class="card feature" data-c="enable ai">
-        <div class="meta"><span class="kind">Live web app</span><span>Firmable</span></div>
-        <h3>ROI Calculator</h3>
-        <p>A live business case builder AEs use on calls.</p>
-        <a class="go" href="https://harmonious-truffle-d559c7.netlify.app/" target="_blank" rel="noopener">View asset <span class="ar">↗</span></a>
-      </article>
+<div class="grid" id="grid">
       <article class="card" data-c="launch">
         <div class="meta"><span class="kind">Case study</span><span>Personal project</span></div>
         <h3>Longevity Flywheel</h3>
@@ -437,7 +419,7 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
         <a class="go" href="longevity.html">Read the case study <span class="ar">→</span></a>
       </article>
       <article class="card" data-c="ai enable">
-        <div class="meta"><span class="kind">Interactive site</span><span>Firmable</span></div>
+        <div class="meta"><span class="kind">Interactive site</span><span>Sales floor</span></div>
         <h3>Call Intelligence Hub</h3>
         <p>Sales calls turned into objection guides, personas and battlecards.</p>
         <a class="go" href="call-intel.html">Explore the hub <span class="ar">→</span></a>
@@ -488,7 +470,7 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
           </span>
           <span class="face back">
             <span class="xmeta"><span>EY</span></span>
-            <span class="blist"><span>Built a COVID-19 response operation from scratch, with no playbook</span><span>Led the proposal and final pitch for a $100K government contract</span><span>Digital health strategy for large health systems</span></span>
+            <span class="blist"><span>Built a COVID-19 response operation from scratch, with no playbook</span><span>Shaped the pitch for a $100K government contract win and sat on the final interview panel</span><span>Digital health strategy for large health systems</span></span>
             <span class="tags"><span class="tag">Operations</span><span class="tag">Digital health</span><span class="tag">Proposals</span></span>
             <span class="hint">Tap to flip back <span class="ar">↻</span></span>
           </span>
@@ -529,6 +511,10 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
         </span>
       </button>
     </div>
+    <div class="facts">
+      <span><b>Languages</b> English, Spanish, Hindi, Punjabi</span>
+      <span><b>Education</b> Monash University, Warwick exchange scholar</span>
+    </div>
   </section>
 
   <section id="how">
@@ -556,40 +542,10 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
     <details class="fw-ex2"><summary>See it in practice</summary>
       <ul>
         <li><b>Top down</b> Rebuilt a $33B+ marketplace thesis from hospital visit data to test a pipeline to platform shift.</li>
-        <li><b>Bottom up</b> Analyzed thousands of sales calls to learn which markets and messages landed, then built AI systems around them.</li>
-        <li><b>Where they meet</b> Turned both into a launch plan and an ROI calculator AEs used across every pricing tier.</li>
+        <li><b>Bottom up</b> I was the one making the calls at Firmable. I could see which markets and messages landed and where hours were being lost, so I built the AI tools to fix it.</li>
+        <li><b>Where they meet</b> Helped turn a platform thesis into a five year plan with pricing tiers, rollout thresholds and milestones.</li>
       </ul>
     </details>
-  </section>
-
-  <section id="what-i-do">
-    <div class="sec-head">
-      <div class="eyebrow">What I do</div>
-      <h2>Strategy, then the systems to run it</h2>
-    </div>
-    <div class="do2">
-      <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg><h3>Commercial strategy</h3><p>ICP, pricing and the business case</p></div>
-      <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/></svg><h3>Partnerships and BD</h3><p>Partners, proposals and senior outreach</p></div>
-      <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg><h3>Sales enablement</h3><p>Pitch guides, objections and battlecards</p></div>
-      <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="17" cy="6" r="2"/><circle cx="14" cy="18" r="2"/></svg><h3>Revenue ops and AI</h3><p>CRM workflows and automation</p></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="eyebrow">Background</div>
-      <h2>How I got here</h2>
-    </div>
-    <div class="path">
-      <div class="step"><span class="yr">2020 to 2023</span><h3>EY</h3><p>Digital health strategy</p></div>
-      <div class="step"><span class="yr">2023 to 2024</span><h3>Summit Health Advisors</h3><p>US digital health GTM and investors</p></div>
-      <div class="step"><span class="yr">2025</span><h3>Steer Health</h3><p>BD and positioning beside the CEO</p></div>
-      <div class="step"><span class="yr">2026</span><h3>Firmable</h3><p>Pipeline, revenue tools and GTM plan</p></div>
-    </div>
-    <div class="facts">
-      <span><b>Languages</b> English, Spanish, Hindi, Punjabi</span>
-      <span><b>Education</b> Monash University, Warwick exchange scholar</span>
-    </div>
   </section>
 
   <section id="contact" class="contact">
@@ -605,19 +561,6 @@ footer{padding-block:28px 40px;font-size:14px;color:var(--muted);display:flex;fl
 
 <script>
 (function(){
-  // work filters
-  const btns=[...document.querySelectorAll('.filters button')];
-  const cards=[...document.querySelectorAll('#grid .card')];
-  const count=document.getElementById('count');
-  function apply(f){
-    let n=0;
-    cards.forEach(c=>{const show=f==='all'||c.dataset.c.split(' ').includes(f);c.hidden=!show;if(show)n++;});
-    btns.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.f===f)));
-    count.textContent='Showing '+n+' project'+(n===1?'':'s');
-  }
-  btns.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.f)));
-  apply('all');
-
   // flip cards
   document.querySelectorAll('.flip').forEach(f=>f.addEventListener('click',()=>{const on=f.getAttribute('aria-pressed')!=='true';f.setAttribute('aria-pressed',String(on));}));
 })();
