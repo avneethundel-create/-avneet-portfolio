@@ -242,7 +242,8 @@ footer a:hover{color:var(--o)}
   .hr{align-items:flex-start}
   .hstats{text-align:left;gap:14px}
   .hstats b{font-size:17px}
-  .pwrap{top:37%;width:min(62vw,270px)}
+  .hero{height:auto;min-height:100svh}
+  .hero>.pwrap{position:relative;left:auto;top:auto;transform:none;margin:clamp(20px,5vh,40px) auto clamp(28px,5vh,44px);width:min(58vw,250px)}
   .si{flex-direction:column;gap:6px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -458,6 +459,21 @@ footer a:hover{color:var(--o)}
   const r1 = document.getElementById('r1');
   [r1].forEach(r => { const h = r.innerHTML; r.innerHTML = h + h + h; r.querySelectorAll('.tl').forEach((t, i) => { if (i >= r.children.length / 3) t.setAttribute('aria-hidden', 'true'); }); });
   const marq = r1.parentElement;
+  // keep the row moving on its own, looping forever, and let scrolling push it along
+  let drift = 0, setW = 0, mvis = true, lastT = performance.now();
+  const measure = () => { setW = r1.scrollWidth / 3; };
+  measure(); addEventListener('resize', measure); if (document.fonts) document.fonts.ready.then(measure);
+  new IntersectionObserver(es => { mvis = es[0].isIntersecting; }).observe(marq);
+  const loop = now => {
+    requestAnimationFrame(loop);
+    const dt = Math.min(.05, (now - lastT) / 1000); lastT = now;
+    if (reduced || !mvis || !setW) return;
+    drift += dt * 40;
+    const scrollPart = (scrollY - (marq.getBoundingClientRect().top + scrollY) + innerHeight) * .3;
+    const x = ((drift + scrollPart) % setW + setW) % setW;
+    r1.style.transform = 'translateX(' + (-x) + 'px)';
+  };
+  requestAnimationFrame(loop);
 
   // scroll reveal paragraph, letter by letter
   const rv = document.getElementById('reveal');
@@ -474,10 +490,6 @@ footer a:hover{color:var(--o)}
     ticking = false;
     const vh = innerHeight;
     // marquee
-    if (!reduced) {
-      const off = (scrollY - (marq.getBoundingClientRect().top + scrollY) + vh) * .3;
-      r1.style.transform = 'translateX(' + (off - 400) + 'px)';
-    }
     // reveal
     const rr = rv.getBoundingClientRect();
     const p = Math.max(0, Math.min(1, (vh * .8 - rr.top) / ((vh * .8 - vh * .2) + rr.height)));
