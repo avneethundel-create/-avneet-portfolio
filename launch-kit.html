@@ -7,17 +7,17 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap">
 <style>
 /* Layout: a field guide. Sticky step list on the left, one long column of steps on the right. Each step = purpose, a worked example, the anatomy of each element, AI prompts and a check. */
 :root{
-  --bg:#F6EDE8; --surface:#FCF7F3; --ink:#3A1A15; --muted:#7A4A3C; --line:#EBD6CA;
-  --accent:#A54D2E; --accent-soft:#EEC2A2; --on-accent:#FFFFFF; --fill:#C66333; --sandy:#E6C97C; --apricot:#E19B6C;
-  --slide:#FCF7F3; --slide-ink:#3A1A15; --slide-muted:#7A4A3C;
-  --display:"Fraunces", Georgia, "Times New Roman", serif;
-  --body:"Instrument Sans", "Helvetica Neue", system-ui, sans-serif;
-  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
-  color-scheme:light;
+  --bg:#0C0C0C; --surface:#151312; --ink:#EFE4DA; --muted:#A89C93; --line:#2B2522;
+  --accent:#F2823A; --accent-soft:#2E1A0F; --on-accent:#FFFFFF; --fill:#E2561F; --sandy:#FFB27A; --apricot:#F2823A;
+  --slide:#151312; --slide-ink:#EFE4DA; --slide-muted:#A89C93;
+  --display:'Kanit', system-ui, sans-serif;
+  --body:'Kanit', system-ui, sans-serif;
+  --mono:'Kanit', system-ui, sans-serif;
+  color-scheme:dark;
 }
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}
@@ -141,6 +141,20 @@ a{color:inherit}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:60}
 
 .ar{font-family:"Segoe UI Symbol","Segoe UI",system-ui,-apple-system,sans-serif;font-weight:400}
+
+/* dark theme to match the main page */
+:root{color-scheme:dark}
+body{font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:700;letter-spacing:-.015em}
+h1{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;background:linear-gradient(180deg,#6E6259 0%,#F3E4D6 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+b,strong{font-weight:600}
+a{color:var(--accent)}
+::selection{background:#F2823A;color:#0C0C0C}
+.banner,.pill.flat,.node.human,.chips span,.mock .pain b,.mh .l.hot,.mh .c.hot,.callout,.mock .pain:nth-child(3) b,.mh .l.hot *,.callout *{color:#1A0A02}
+.mock .pain:nth-child(1) b{color:#fff}
+.prompt{background:#1C1917;color:var(--ink);border:1px solid var(--line)}
+.callout [style*="background"],.callout [style*="background"] *{color:var(--ink)}
+.node.human,.node.human *{color:#1A0A02}
 </style>
 </head>
 <body>
