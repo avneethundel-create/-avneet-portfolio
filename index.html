@@ -74,11 +74,12 @@ img{display:block;max-width:100%}
 .psheen{position:absolute;inset:0;border-radius:50%;pointer-events:none;mix-blend-mode:soft-light;opacity:0;transition:opacity .3s}
 .pstage:hover .psheen{opacity:1}
 .pwrap .fi{position:relative}
-.phint{position:absolute;left:50%;top:calc(100% + 22px);transform:translateX(-50%);white-space:nowrap;font-size:13px;letter-spacing:.06em;color:var(--o2);opacity:0;transition:opacity .3s;pointer-events:none}
+.phint{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);white-space:nowrap;font-size:13px;letter-spacing:.06em;color:var(--o2);opacity:0;transition:opacity .3s;pointer-events:none}
 .pwrap:hover .phint{opacity:1}
 .ph-m{display:none}
 @media (hover:none){.ph-d{display:none}.ph-m{display:inline}}
 @media (hover:none){.phint{opacity:.8}}
+@media (max-width:640px){.phint{position:static;display:block;transform:none;white-space:normal;text-align:center;margin:14px auto 0;max-width:260px;font-size:12px;line-height:1.4}}
 
 /* ===== MARQUEE ===== */
 .marq{padding:clamp(56px,6vw,90px) 0 0;display:flex;flex-direction:column;gap:12px;overflow:hidden}
