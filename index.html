@@ -81,7 +81,7 @@ img{display:block;max-width:100%}
 .ph-m{display:none}
 @media (hover:none){.ph-d{display:none}.ph-m{display:inline}}
 @media (hover:none){.phint{opacity:.8}}
-@media (max-width:640px){.phint{position:static;display:block;transform:none;white-space:normal;text-align:center;margin:14px auto 0;max-width:260px;font-size:12px;line-height:1.4}}
+@media (max-width:640px){.phint{position:absolute;left:calc(100% + 14px);top:30%;bottom:auto;transform:none;white-space:normal;text-align:left;width:calc(100vw - 40px - min(54vw,220px) - 14px);max-width:200px;font-size:12.5px;line-height:1.45;opacity:1!important}.ph-d{display:none}.ph-m{display:inline}}
 
 /* ===== MARQUEE ===== */
 .marq{padding:clamp(56px,6vw,90px) 0 0;display:flex;flex-direction:column;gap:12px;overflow:hidden}
@@ -194,7 +194,7 @@ details.math[open] summary::after{content:" −"}
 .lab::after{content:"";flex:1;height:1px;background:var(--line)}
 
 /* ===== EXPERIENCE (flip) ===== */
-.xp{max-width:1180px;margin:clamp(40px,5vw,64px) auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
+.xp{max-width:1180px;margin:clamp(40px,5vw,64px) auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch}
 .flip{all:unset;cursor:pointer;perspective:1200px;display:grid}
 .flip:focus-visible .flip-in{outline:2px solid var(--o);outline-offset:4px}
 .flip-in{position:relative;display:grid;min-height:340px;height:100%;transition:transform .7s cubic-bezier(.3,.7,.2,1);transform-style:preserve-3d;border-radius:36px}
@@ -248,9 +248,10 @@ footer a:hover{color:var(--o)}
   .hstats{text-align:left;gap:14px}
   .hstats b{font-size:17px}
   .hero{height:auto;min-height:100svh}
-  .hero>.pwrap{position:relative;left:auto;top:auto;transform:none;margin:clamp(20px,5vh,40px) auto clamp(28px,5vh,44px);width:min(58vw,250px)}
+  .hero>.pwrap{position:relative;left:auto;top:auto;transform:none;margin:clamp(20px,5vh,40px) 0 clamp(28px,5vh,44px);width:min(54vw,220px)}
   .si{flex-direction:column;gap:6px}
 }
+@media (min-width:901px) and (max-width:1180px){.xp{grid-template-columns:repeat(2,1fr)}}
 @media (prefers-reduced-motion:reduce){
   .fi{opacity:1;transform:none;transition:none}
   .reveal .c{opacity:1}
@@ -276,13 +277,13 @@ footer a:hover{color:var(--o)}
   <div class="hbot">
     <div class="hl fi" style="--fy:20px;--d:.35s">
       <p><b>Commercial strategy &amp; ops · Health tech</b>I help health tech teams sell smarter, with sharper strategy and AI tools that save reps hours</p>
-      <div class="open"><small>Open to</small><span>Commercial Ops</span><span>Strategy &amp; Ops</span><span>Partnerships</span><span>Chief of Staff</span></div>
+      <div class="open"><small>Open to</small><span>Commercial Ops</span><span>Strategy &amp; Ops</span></div>
     </div>
     <div class="hr fi" style="--fy:20px;--d:.5s">
       <div class="hstats">
         <div><b>International</b><span>US and Australian markets</span></div>
         <div><b>$100K</b><span>digital health strategy bid won at EY</span></div>
-        <div><b>~266 hrs</b><span>a month given back to a sales team</span></div>
+        <div><b>45 to 60 hrs</b><span>a month saved by one AI workflow I built</span></div>
       </div>
       <a class="cbtn" href="#contact">Contact me</a>
     </div>
@@ -317,14 +318,14 @@ footer a:hover{color:var(--o)}
   <h2 class="big grad fi" style="--fy:40px">Impact</h2>
   <div class="igrid">
     <div class="ic hot fi">
-      <b data-count="266" data-pre="~" data-suf=" hrs">~266 hrs</b>
-      <p>I was on the calls, so I could see where time was being lost. I built AI tools to fix it.</p>
-      <div class="flow"><span>2 min saved per account</span><i>×</i><span>40 accounts a day</span><i>×</i><span>10 reps</span></div>
-      <details class="math"><summary>See the full math</summary>
+      <b>45 to 60 hrs</b>
+      <p>Saved each month by one AI workflow that enriches HubSpot records before reps call, measured after it went live. Reps made 30% more calls. I was on the calls, so I could see where time was being lost.</p>
+      <div class="flow"><span>Measured · 45 to 60 hrs a month</span><span>30% more calls</span></div>
+      <details class="math"><summary>Modeled potential at full team scale</summary>
         <div class="calc">
           <div><span>40 accounts × 2 minutes</span><em>80 min per rep a day</em></div>
           <div><span>80 minutes × 10 reps</span><em>13.3 hrs a day</em></div>
-          <div><span>13.3 hours × 5 days × 4 weeks</span><em>~266 hrs a month</em></div>
+          <div><span>13.3 hours × 5 days × 4 weeks</span><em>~266 hrs a month, modeled</em></div>
           <div><span>80 min back ÷ 15 min calls × 10 reps</span><em>50 more calls a day</em></div>
           <div><span>50 calls × $40 × 20 days</span><em>$40K a month potential</em></div>
         </div>
@@ -344,7 +345,7 @@ footer a:hover{color:var(--o)}
   <div class="slist">
     <div class="si fi"><span class="n">01</span><div><h3>Commercial strategy</h3><p>Where to win. Market sizing, business models and pricing, from consulting with health systems, investors and founders at EY and Summit Health Advisors.</p><span class="pt">Rebuilt a $33B+ marketplace thesis from hospital visit data</span></div></div>
     <div class="si fi" style="--d:.1s"><span class="n">02</span><div><h3>Business cases &amp; value selling</h3><p>Logic that starts with the buyer's own numbers and ends in the ROI and payback a CFO signs off on.</p><span class="pt">Walkthrough on request</span></div></div>
-    <div class="si fi" style="--d:.2s"><span class="n">03</span><div><h3>AI tools for sales teams</h3><p>I find where reps lose time and build the tools that give it back, from account research to call insights.</p><span class="pt">Around 266 hours a month back for one team</span></div></div>
+    <div class="si fi" style="--d:.2s"><span class="n">03</span><div><h3>AI tools for sales teams</h3><p>I find where reps lose time and build the tools that give it back, from account research to call insights.</p><span class="pt">45 to 60 hours a month saved by one workflow</span></div></div>
     <div class="si fi" style="--d:.3s"><span class="n">04</span><div><h3>GTM &amp; partnerships</h3><p>Launch plans, conference strategy and messaging tested on real calls, so the plan survives contact with buyers.</p><span class="pt">200+ qualified leads from one conference</span></div></div>
     <div class="si fi" style="--d:.4s"><span class="n">05</span><div><h3>Operations from zero</h3><p>At EY I was part of the team that built a COVID-19 response operation with no playbook. Workflows, trackers, vendors and training.</p><span class="pt">Built it while it was already running</span></div></div>
   </div>
@@ -422,6 +423,12 @@ footer a:hover{color:var(--o)}
       <span class="flip-in">
         <span class="face front"><span class="org2">Steer Health</span><span class="ficon"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="44" cy="44" r="26"/><circle cx="44" cy="44" r="14"/><circle cx="44" cy="44" r="4" class="f"/><path d="M63 63 L82 82"/></svg></span><span class="fh">Strategy inside a seed stage startup</span><span class="frole">Business Generalist · US · 2025</span><span class="hint">Tap to see the work <span class="ar">↻</span></span></span>
         <span class="face back"><span class="org2">Steer Health</span><span class="blist"><span>Benchmarked GLP-1 pricing across telehealth competitors and found room to raise prices</span><span>Walked a national provider's booking journey click by click to find where patients dropped off</span><span>Strategic analysis for a hospital newly acquired by a national health system</span></span><span class="hint">Tap to flip back <span class="ar">↻</span></span></span>
+      </span>
+    </button>
+    <button class="flip fi" style="--d:.3s" type="button" aria-pressed="false" aria-label="Firmable. Show details">
+      <span class="flip-in">
+        <span class="face front"><span class="org2">Firmable</span><span class="ficon"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M16 22 H70 a8 8 0 0 1 8 8 V54 a8 8 0 0 1 -8 8 H40 L26 74 V62 H16 a8 8 0 0 1 -8 -8 V30 a8 8 0 0 1 8 -8 Z"/><circle cx="28" cy="42" r="4" class="f"/><circle cx="43" cy="42" r="4" class="f"/><circle cx="58" cy="42" r="4" class="f"/><path d="M80 12 L84 20 L92 24 L84 28 L80 36 L76 28 L68 24 L76 20 Z" class="f"/></svg></span><span class="fh">Made the sales calls, then built the AI tools to fix what slowed them down</span><span class="frole">GTM &amp; Sales Development · Australia · 2026</span><span class="hint">Tap to see the work <span class="ar">↻</span></span></span>
+        <span class="face back"><span class="org2">Firmable</span><span class="blist"><span>Built a HubSpot enrichment workflow with Claude Code that saved 45 to 60 hours a month and let reps make 30% more calls</span><span>Built an AI pipeline that turns call transcripts into objection guides and ICP frameworks</span><span>Closed a $45.7K enterprise deal with Xe.com in under a month</span><span>Daily competitor digest built in n8n for the growth team</span></span><span class="hint">Tap to flip back <span class="ar">↻</span></span></span>
       </span>
     </button>
   </div>
