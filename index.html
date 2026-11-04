@@ -62,9 +62,11 @@ img{display:block;max-width:100%}
 /* portrait */
 .pwrap{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);z-index:10;width:clamp(200px,min(28vw,40vh),400px)}
 .pstage{position:relative;width:100%;aspect-ratio:640/720;cursor:crosshair;touch-action:pan-y}
-#pdots{position:absolute;left:-30%;top:-30%;width:160%;height:160%;pointer-events:none}
-.pstage .avatar{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover;opacity:1;transition:opacity .4s}
-.pstage.live .avatar{opacity:0}
+#pdots{position:absolute;left:-30%;top:-30%;width:160%;height:160%;pointer-events:none;transition:opacity .12s}
+.pstage.photo #pdots{opacity:0;transition:opacity .9s ease}
+.pstage .avatar{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:1;transition:opacity .4s;user-select:none;-webkit-user-drag:none}
+.pstage.live .avatar{opacity:0;transition:opacity .12s}
+.pstage.live.photo .avatar{opacity:1;transition:opacity .9s ease}
 #bgdots{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .hero>.nav,.hero>.hwrap,.hero>.hbot{position:relative;z-index:1}
 @keyframes spin{to{transform:rotate(1turn)}}
@@ -74,7 +76,7 @@ img{display:block;max-width:100%}
 .psheen{position:absolute;inset:0;border-radius:50%;pointer-events:none;mix-blend-mode:soft-light;opacity:0;transition:opacity .3s}
 .pstage:hover .psheen{opacity:1}
 .pwrap .fi{position:relative}
-.phint{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);white-space:nowrap;font-size:13px;letter-spacing:.06em;color:var(--o2);opacity:0;transition:opacity .3s;pointer-events:none}
+.phint{position:absolute;left:calc(100% + 28px);top:38%;transform:none;white-space:normal;width:190px;line-height:1.45;text-align:left;font-size:13px;letter-spacing:.06em;color:var(--o2);opacity:0;transition:opacity .3s;pointer-events:none}
 .pwrap:hover .phint{opacity:1}
 .ph-m{display:none}
 @media (hover:none){.ph-d{display:none}.ph-m{display:inline}}
@@ -267,8 +269,8 @@ footer a:hover{color:var(--o)}
   <div class="hwrap fi" style="--fy:40px;--d:.15s"><h1 class="grad" id="hh">Hi, I&rsquo;m Avneet<span class="dot">.</span></h1></div>
 
   <div class="pwrap"><div class="fi" style="--d:.6s">
-    <div class="pstage" id="pstage"><img class="avatar" id="pimg" src="avneet.jpg" alt="Avneet Hundel" width="640" height="720"><canvas id="pdots" aria-hidden="true"></canvas></div>
-    <span class="phint"><span class="ph-d">Go on, scatter me. Putting messy things back together is my forte.</span><span class="ph-m">Tap to scatter me. Putting messy things back together is my forte.</span></span>
+    <div class="pstage" id="pstage"><img class="avatar" id="pimg" src="avneet-cut.webp" alt="Avneet Hundel" width="640" height="720"><canvas id="pdots" aria-hidden="true"></canvas></div>
+    <span class="phint"><span class="ph-d"><span class="ar">&larr;</span> Go on, scatter me. Putting messy things back together is my forte.</span><span class="ph-m">Tap to scatter me. Putting messy things back together is my forte.</span></span>
   </div></div>
 
   <div class="hbot">
@@ -532,15 +534,10 @@ footer a:hover{color:var(--o)}
     const o = document.createElement('canvas'); o.width = gx; o.height = gy;
     const oc = o.getContext('2d', {willReadFrequently: true}); oc.drawImage(img, 0, 0, gx, gy);
     let d; try { d = oc.getImageData(0, 0, gx, gy).data; } catch (e) { return false; }
-    // background = bright, colourless pixels reachable from the top and sides
-    const bg = new Uint8Array(gx * gy), cand = i => { const r = d[i*4], g = d[i*4+1], b = d[i*4+2], mx = Math.max(r,g,b), mn = Math.min(r,g,b); return mx > 188 && mx - mn < 34; };
-    const q = []; for (let x = 0; x < gx; x++) q.push(x); for (let y = 0; y < gy; y++) { q.push(y*gx); q.push(y*gx + gx - 1); }
-    while (q.length){ const i = q.pop(); if (bg[i] || !cand(i)) continue; bg[i] = 1; const x = i % gx, y = (i / gx) | 0; if (x > 0) q.push(i-1); if (x < gx-1) q.push(i+1); if (y > 0) q.push(i-gx); if (y < gy-1) q.push(i+gx); }
     const left = (W - sw) / 2, top = (H - sh) / 2, old = P; P = [];
     for (let y = 0; y < gy; y++) for (let x = 0; x < gx; x++){
-      const i = y * gx + x; if (bg[i]) continue;
-      // keep the edges of the photo soft: fade out near the frame
-      const ex = Math.min(x, gx-1-x) / gx, ey = (gy-1-y) / gy; if (ex < .02 || ey < .02) continue; if (ey < .16 && Math.random() > ey / .16) continue;
+      // the photo is already cut out, so transparent pixels are background; soft edges thin out
+      const i = y * gx + x, al = d[i*4+3]; if (al < 60 || (al < 235 && Math.random() > al / 255)) continue;
       let r = d[i*4], g = d[i*4+1], b = d[i*4+2];
       // warm the palette a touch so it sits with the orange
       const L = v => 255 * Math.pow(v / 255, .72); r = Math.min(255, L(r) * 1.05 + 10); g = L(g); b = L(b) * .9;
@@ -556,14 +553,19 @@ footer a:hover{color:var(--o)}
     active = 1; return true;
   }
 
+  // once the dots settle they hand over to the real photo; touching the face turns it back into dots
+  let photo = false, calm = 0, born = 0;
+  const setPhoto = on => { photo = on; calm = 0; stage.classList.toggle('photo', on); };
   function frame(t){
     requestAnimationFrame(frame);
     if (!ready || active <= 0) return;
+    if (!born) born = t;
     ctx.clearRect(0, 0, W, H);
     const R = Math.max(50, W * .14), R2 = R * R, sp = Math.hypot(mx - pmx, my - pmy); pmx = mx; pmy = my;
-    let moving = 0;
+    let moving = 0, hit = false;
     for (const p of P){
       const dx = p.x - mx, dy = p.y - my, d2 = dx*dx + dy*dy;
+      if (d2 < R2 && sp > .5) hit = true;
       if (d2 < R2){ const d = Math.sqrt(d2) || 1, f = (1 - d / R) * (2.2 + Math.min(sp, 40) * .12); p.vx += dx / d * f; p.vy += dy / d * f; }
       const bx = reduced ? 0 : Math.sin(t * .0012 + p.ph) * .35, by = reduced ? 0 : Math.cos(t * .001 + p.ph) * .35;
       p.vx += (p.hx + bx - p.x) * .045; p.vy += (p.hy + by - p.y) * .045;
@@ -571,6 +573,8 @@ footer a:hover{color:var(--o)}
       moving += Math.abs(p.vx) + Math.abs(p.vy);
       ctx.fillStyle = p.c; ctx.fillRect(p.x - p.s/2, p.y - p.s/2, p.s, p.s);
     }
+    if (photo && hit) setPhoto(false);
+    else if (!photo && !reduced){ calm = moving / P.length < .08 ? calm + 1 : 0; if (calm > 35 && t - born > 1800) setPhoto(true); }
     // keep a slow shimmer going while the hero is on screen
     active = (moving / P.length > .02 || onScreen) ? 1 : active - .05;
   }
@@ -580,6 +584,7 @@ footer a:hover{color:var(--o)}
   addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; active = 1; }, {passive: true});
   document.addEventListener('pointerleave', () => { mx = my = -1e4; });
   stage.addEventListener('pointerdown', e => {
+    setPhoto(false);
     const r = cv.getBoundingClientRect(), cx = e.clientX - r.left, cy = e.clientY - r.top;
     for (const p of P){ const dx = p.x - cx, dy = p.y - cy, d = Math.hypot(dx, dy) || 1, f = 900 / (d + 40); p.vx += dx / d * f * (.6 + Math.random() * .8); p.vy += dy / d * f * (.6 + Math.random() * .8); }
     active = 1;
